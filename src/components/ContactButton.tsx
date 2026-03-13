@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Facebook, Mail, Phone, X } from 'lucide-react';
+import { MessageCircle, Facebook, Mail, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { storage } from '../services/storage';
 
@@ -57,7 +57,7 @@ export const ContactButton: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className={`w-14 h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 ${isOpen ? 'bg-gray-800 rotate-90' : 'bg-emerald-600 hover:scale-110'}`}
       >
-        {isOpen ? <X size={28} /> : <Phone size={28} />}
+        {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
       </button>
     </div>
   );

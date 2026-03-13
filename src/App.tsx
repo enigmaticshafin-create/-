@@ -9,7 +9,7 @@ import { Product, CartItem, User, SiteSettings, Language, Theme } from './types'
 import { storage } from './services/storage';
 import { translations } from './translations';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingBag, ArrowRight, X, Download, MessageCircle, MessageSquare, Phone, Mail, Clock } from 'lucide-react';
+import { ShoppingBag, ArrowRight, X, Download, MessageCircle, MessageSquare, Mail, Clock } from 'lucide-react';
 
 export default function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -242,6 +242,8 @@ export default function App() {
                   key={product.id} 
                   product={product} 
                   onAddToCart={addToCart} 
+                  language={language}
+                  theme={theme}
                 />
               ))}
             </div>
@@ -263,12 +265,11 @@ export default function App() {
             <h2 className="text-3xl lg:text-4xl font-black tracking-tight mb-4">{t.supportSubtitle}</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: MessageCircle, label: t.whatsappSupport, color: 'bg-green-500', link: `https://wa.me/${settings.whatsapp}` },
               { icon: MessageSquare, label: t.messengerSupport, color: 'bg-blue-600', link: settings.facebook },
               { icon: Mail, label: t.emailSupport, color: 'bg-red-500', link: `mailto:${settings.email}` },
-              { icon: Phone, label: t.callSupport, color: 'bg-emerald-600', link: `tel:${settings.whatsapp}` },
             ].map((option, i) => (
               <motion.a
                 key={i}
@@ -318,6 +319,8 @@ export default function App() {
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         items={cartItems}
+        language={language}
+        theme={theme}
         onUpdateQuantity={updateQuantity}
         onRemove={removeFromCart}
         onClear={() => setCartItems([])}
@@ -334,6 +337,8 @@ export default function App() {
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
         onAuthSuccess={handleAuthSuccess}
+        language={language}
+        theme={theme}
       />
 
       <ContactButton />
