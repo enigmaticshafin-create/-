@@ -1,0 +1,5 @@
+{
+  "name": "আমের বাজার",
+  "description": "Premium mango market with handcrafted Bangladeshi products, featuring a secure user authentication system and customizable site settings.",
+  "requestFramePermissions": ["geolocation"]
+}
